@@ -11,13 +11,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
 <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+
 <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
 
 <head>
     <title>Three Ways to Be Beautiful 🫵🩷</title>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter&family=Itim&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Inter&family=Itim&display=swap');
     :root {
     --tombol-bg: rgba(0, 0, 0, .3); 
     --tombol-teks: #fff;
@@ -26,22 +27,24 @@
     --gaya-font: 'Itim', cursive;
     --gaya-font2: 'Dancing Script', sans-serif;
     }
-    body{background-color:#000;font-family:var(--gaya-font);padding: 20px 25px;-webkit-user-select: none; user-select: none; overflow: hidden;} 
+    /* Tumhara original animation */
+    @keyframes rt{from {transform: scale(.9);} to {transform: scale(1);}}
+    
+    body{background-color:#000;font-family:var(--gaya-font);padding: 20px 25px;-webkit-user-select: none; user-select: none;} 
     #bodyblur{opacity:0;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);transition:all 1s ease;} 
     
     #Content{animation: rt 3s infinite alternate; position:relative;opacity:0;margin-top:120px;width:100%;height:180px;transition:all .7s ease;}
     #Content > *{display:flex;align-items:center;text-align:center;justify-content:center;}
     
-    @keyframes rt{from {transform: scale(.9);} to {transform: scale(1);}}
-
-    /* HEART MODIFIED */
-    .lovein{background:#fff;border-radius:50%;width:40px;height:40px;padding:10px;font-size:30px;display:flex;align-items:center;justify-content:center;transition:all .3s ease; position:relative; cursor:pointer; margin: 0 auto;}
+    .lovein{background:#fff;border-radius:50%;width:40px;height:40px;padding:10px;font-size:30px;display:flex;align-items:center;text-align:center;justify-content:center;transition:all .3s ease; position:relative; cursor:pointer;}
     .lovein:hover{transform: scale(.9);}
-    .heart-inside-text {position:absolute; font-size:9px; color:white; font-weight:bold; top:45%; pointer-events:none; font-family:arial;}
+    
+    /* Heart ke andar LOVE text */
+    .inner-love-text {position:absolute; font-size:9px; color:white; font-weight:bold; top:45%; pointer-events:none; font-family:Arial, sans-serif;}
 
     #ket{margin-top:25px !important;font-size:17px;font-weight:700;color:white;text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);}
-
-    blockquote{position:absolute;opacity:0;visibility:hidden;margin-top:100px;background:rgba(0,0,0,.5);box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;transform: scale(.1);transition:all 1s ease;color:var(--tombol-teks);text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);width:300px;text-align:center;line-height:1.3em;padding:20px;border: 2px solid #fff;border-radius:30px; left:50%; transform: translate(-50%, -50%) scale(.1);}
+    
+    blockquote{position:absolute;opacity:0;visibility:hidden;margin-top:100px;background:rgba(0,0,0,.5);box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;transform: scale(.1);transition:all 1s ease;color:var(--tombol-teks);text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);width:400px;text-align:center;line-height:1.3em;padding:10px 20px;border: 2px solid #fff;border-radius:30px; margin: 0 auto; left: 0; right: 0;}
     blockquote p{font-size:18px;font-weight:700;line-height:1.5em;transition:all .5s ease;}
 </style>
 
@@ -51,38 +54,37 @@
     <div id='Content'>
         <div id="loveIn" class="lovein">
             <span style="color: purple;">&#10084;</span>
-            <span class="heart-inside-text">LOVE</span>
+            <span class="inner-love-text">LOVE</span>
         </div>
         <p id="ket">Tap the LOVE!</p>
     </div>
 
     <blockquote id="msgBox">
-        <p id="kalimat">Very Beautiful Infact 🫣👉</p>
-        <p id="kalimatb">Aaaaakkk 〰️❤️</p>
-        <p id="kalimatc">Tumhe kisi ki nazar na lge</p>
-        <p id="emo">💐❤️😝😋💞🤌🧿</p>
+        <p>Very Beautiful Infact 🫣👉</p>
+        <p>Aaaaakkk 〰️❤️</p>
+        <p>Tumhe kisi ki nazar na lge</p>
+        <p>💐❤️😝😋💞🤌🧿</p>
     </blockquote>
 
     <script>
-        // Transition and Animation Logic
+        // Original page load animation
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('Content').style.opacity = "1";
             }, 500);
         };
 
+        // Transition logic jo original feel dega
         document.getElementById('loveIn').onclick = function() {
             document.getElementById('Content').style.opacity = "0";
-            document.getElementById('Content').style.visibility = "hidden";
-            
             setTimeout(() => {
+                document.getElementById('Content').style.display = "none";
                 var box = document.getElementById('msgBox');
                 box.style.opacity = '1';
                 box.style.visibility = 'visible';
-                box.style.transform = 'translate(-50%, -50%) scale(1)';
-                box.style.top = '50%';
+                box.style.transform = 'scale(1)';
             }, 700);
-            
+
             Swal.fire({
                 title: 'Hi, Ghhu ✨',
                 background: '#000',
